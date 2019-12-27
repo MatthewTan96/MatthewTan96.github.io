@@ -1,0 +1,95 @@
+<div w3-include-html="bootstrap.html"></div>
+  <script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+  </script>
+
+  <head>
+    <div w3-include-html="navigationBar.html"></div>
+    <title>Contact me!</title>
+  </head>
+
+<h1 class="text-center" > Contact me! </h1>
+
+<!--  Padding  -->
+<br>
+
+<!-- Content -->
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+            <div class="col-sm">
+                I don't consider myself a super coder but I do consider myself a fast learner, and an enthousiastic one at that!
+                If wish to contact me to offer a joint project for us to work on together, give feedback on this website or for any professional purposes 
+                feel free to contact me via these channels below! If you do find me on any other social medias, please do not contact me from there, 
+                as I consider those spaces personal to friends and family only.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Horizontal line on bootstrap not nice, so self made -->
+
+
+
+
+<br> <br>
+
+<div class="container">
+    <div class="row">
+
+        <!-- Linkedin -->
+        <div class="col-sm">
+            <a href ="https://www.linkedin.com/in/matthew-tan-118010182/"> 
+                <img src="Images/linkedin.png" hspace="100" width="40%" alt="LinkedIn">
+            </a>
+            <br> <br>
+            <pre style="font-family:Helvetica Neue ; font-size:16px;">   Click the button to access to my LinkedIn Page!</pre>
+        </div>
+
+        <div class="col-sm">
+            <img src="Images/telegram.webp" hspace="100" width="40%" alt="Telegram">
+            <br><br>
+            <pre style="font-family:Helvetica Neue ; font-size:16px;" >    @Realmatsu (Last updated 27th December 2019) </pre>
+        </div>
+
+        <div class="col-sm">
+            <a href ="mailto:matthewiantan@gmail.com">
+                <img src="Images/gmail.jpg" hspace="50" width="50%" alt="Gmail">
+            </a>
+            <br><br>
+            <pre style="font-family:Helvetica Neue ; font-size:16px; padding-top: 7px" >     Click the button to send me an email! </pre>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    includeHTML();
+</script>
