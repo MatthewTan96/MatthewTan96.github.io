@@ -1,0 +1,150 @@
+<html>
+  <div w3-include-html="bootstrap.html"></div>
+  <script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+  </script>
+
+  <!-- Script for chess board -->
+  <!-- Support libraries from Yahoo YUI project -->  
+  <script type="text/javascript"  
+      src="http://chesstempo.com/js/pgnyui.js">  
+  </script>   
+  <script type="text/javascript"  
+      src="http://chesstempo.com/js/pgnviewer.js">  
+  </script>  
+  <link  
+  type="text/css"   
+  rel="stylesheet"   
+  href="http://chesstempo.com/css/board-min.css">  
+  </link> 
+
+  <!-- Script for PGN -->
+  <script>  
+    new PgnViewer(  
+      { boardName: "demo",  
+        pgnFile: 'bestgame1.pgn',  
+        pieceSet: 'leipzig',   
+        pieceSize: 46  
+      }  
+    );  
+</script>  
+
+<head>
+  <div w3-include-html="navigationBar.html"></div>
+  <title>A Game of Monster Bishops</title>
+</head>
+
+<br>
+
+<body>
+
+  <h4 style="text-align:center">A Game of Monster Bishops </h4>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col px-md-5">
+        
+        <p> 
+          This game was interesting because it occurred right after my brother asked me if a bishop was stronger than a knight
+          to which I answered "that purely depends on the position of the board". After that I showed him this game.
+          <br><br>
+          To answer the question, bishops are stronger in "Open Positions", where the pawns are free to move around and are not locked in place. 
+          A bishop can travel across the board while a knight cannot. A bishop can guard all advancing squares of the knight, making it stronger
+          if fully mobile. This game shows an example of a monster bishop pair, and how I forced the opponent to trade a knight for a bishop. 
+          Be sure to check my notes as you scroll through the game!
+        </p>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      
+      <div id="demo-container"></div>  
+
+    </div>
+
+    <div class="col-sm">
+
+      <p class="font-weight-bold">
+        Date: 2019-12-29 
+        <br>
+        Black: Me (Elo: 1176) vs White: Diosesdevida (Elo: 1125)<br>
+        Website: Chess.com
+      </p>
+
+      <div id="demo-moves"></div> 
+
+      <br><br>
+      <p class="font-weight-bold">Annotations and Notes</p>
+      
+      <p class="font-weight-normal">
+        3. Qh5 is typically considered a very amateurish move. 
+        The aim of that is to try and achieve #Qxf7 checkmate.
+        ... e6 is the only way to stop checkmate and defend the c5 pawn.
+        <br><br>
+        
+        10. Qe4 shows that my opponent is willing to trade a bishop for a knight, 
+        a trade he will soon regret. The pushed pawns are blocked (e6 and c5), but 
+        they can be opened quickly. A thought that never occured to him at the time.
+        
+        <br> <br>
+        
+        12. Qh4 loses a pawn as shown in the subsequent moves.
+        <br><br>
+
+        14. Nf3+ forces a trade of a knight for a bishop. No matter he the opponent recaptures
+        (gxf3 or Nxf3) I will take his bishop (Bxb2) with tempo as I am attacking his rook at the 
+        same time. ... gxf3 is a weaker move than Nxf3, as his knight is stuck in the corner with 
+        almost no squares to go to. 
+        <br><br>
+        22. Rxe8+ Remember! If you position is losing, never trade! However this guy keeps doing it!
+        <br><br>
+        28. Nf4 loses his rook, as I have a discovered attack on his rook as you will see in the next 
+        moves.
+        <br><br>
+        30. ... Ra1+ forces the king off the protection of the knight, and he loses yet another piece.
+        Game over. 
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  includeHTML();
+</script>
+
+<br><br><br>

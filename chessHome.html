@@ -1,25 +1,102 @@
-<!-- Support libraries from Yahoo YUI project -->  
-<script type="text/javascript"  
-    src="http://chesstempo.com/js/pgnyui.js">  
-</script>   
-<script type="text/javascript"  
-    src="http://chesstempo.com/js/pgnviewer.js">  
-</script>  
-<link  
- type="text/css"   
- rel="stylesheet"   
- href="http://chesstempo.com/css/board-min.css">  
-</link> 
+<!DOCTYPE html>
 
-<script>  
-    new PgnViewer(  
-      { boardName: "demo",  
-        pgnFile: '/kasparov.pgn',  
-        pieceSet: 'leipzig',   
-        pieceSize: 46  
-      }  
-    );  
-</script>  
+<html>
+  <div w3-include-html="bootstrap.html"></div>
+  <script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+  </script>
 
-<div id="demo-container"></div>  
-<div id="demo-moves"></div>  
+<head>
+  <div w3-include-html="navigationBar.html"></div>
+  <title>ChessHome</title>
+</head>
+
+
+<body>
+  <!-- Title -->
+  <h1 style="text-align:center">Matt's Chess Page</h1>
+  <br>
+  <!-- Content  -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        
+        <p class="text-center">
+
+          Hi! Welcome to my chess page! Besides lessons that I will make in my free time,
+          I want to use this opportunity to show off my most memorable games, and the lessons 
+          that you can learn from it. 
+
+          Also, this is a good opportunity to try and implement a virual chess board. 
+          A bit of play for coding if you will. 
+
+          <br>
+          <br>
+
+          Disclaimer: I am by no means the best or even a decently good chess player.
+          There will be a lot of mistakes, but I'm hoping that there are good learning points for amateurs 
+          nonetheless. 
+        </p>
+      </div>
+    </div>
+  </div>
+ 
+
+
+  <br>
+
+  <!-- My best chess games table -->
+  <!-- Title -->
+  <h4 style="text-align:center">Matt's top 10 most memorable games</h4>
+  <br>
+  <p style="text-align:center">Click on a picture to begin!</p>
+  <br>
+  <!-- Table of contents -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <a href ="bestgame1.html"> 
+          <img src="Images/bishop.JPG" hspace="100" width="10%" alt="Bishop">
+        </a>
+
+        <br><br>
+        <pre style="font-family:Helvetica Neue ; font-size:16px;" >                A Game of Monster Bishops </pre>
+        
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+  <script>
+    includeHTML();
+  </script>
