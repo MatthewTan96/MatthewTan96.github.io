@@ -1,4 +1,30 @@
 <html>
+
+  <!-- Script for chess board -->
+  <!-- Support libraries from Yahoo YUI project -->  
+  <script type="text/javascript"  
+      src="http://chesstempo.com/js/pgnyui.js">  
+  </script>   
+  <script type="text/javascript"  
+      src="http://chesstempo.com/js/pgnviewer.js">  
+  </script>  
+  <link  
+  type="text/css"   
+  rel="stylesheet"   
+  href="http://chesstempo.com/css/board-min.css">  
+  </link> 
+
+  <!-- Script for PGN -->
+  <script>  
+    new PgnViewer(  
+      { boardName: "demo",  
+        pgnFile: 'bestgame1.pgn',  
+        pieceSet: 'leipzig',   
+        pieceSize: 46  
+      }  
+    );  
+</script>  
+
   <div w3-include-html="bootstrap.html"></div>
   <script>
     function includeHTML() {
@@ -30,30 +56,7 @@
     }
   </script>
 
-  <!-- Script for chess board -->
-  <!-- Support libraries from Yahoo YUI project -->  
-  <script type="text/javascript"  
-      src="http://chesstempo.com/js/pgnyui.js">  
-  </script>   
-  <script type="text/javascript"  
-      src="http://chesstempo.com/js/pgnviewer.js">  
-  </script>  
-  <link  
-  type="text/css"   
-  rel="stylesheet"   
-  href="http://chesstempo.com/css/board-min.css">  
-  </link> 
 
-  <!-- Script for PGN -->
-  <script>  
-    new PgnViewer(  
-      { boardName: "demo",  
-        pgnFile: 'bestgame1.pgn',  
-        pieceSet: 'leipzig',   
-        pieceSize: 46  
-      }  
-    );  
-</script>  
 
 <head>
   <div w3-include-html="navigationBar.html"></div>
