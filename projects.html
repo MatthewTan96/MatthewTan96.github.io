@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+  <div w3-include-html="bootstrap.html"></div>
+  <script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+  </script>
+
+<head>
+    <div w3-include-html="navigationBar.html"></div>
+    <title>MatthewTan96's Projects</title>
+</head>
+
+<body>
+    <!-- Title -->
+    <br>
+    <h1 style="text-align:center">My Projects</h1>
+    <br>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            
+            <p class="text-center">
+    
+              Hi! Welcome to my Projects page! On this page I will 
+              highlight all the projects that I have done both outside of school 
+              and inside of school.
+
+              <br><br>
+
+              Disclaimer: SMU Project specifications may be reused, and thus some source codes are excluded. 
+              <br> 
+              If you would like to see the source code of my projects that are not repeated, please PM me instead via the contact 
+              avenues on my contact page <a href=contact.html>here</a>. 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+  <!-- My best chess games table -->
+  <!-- Title -->
+  <h4 style="text-align:center">My Projects</h4>
+  <br>
+  <p style="text-align:center">Click on a picture to begin!</p>
+  <br>
+  <!-- Table of contents -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <a href ="tsmq1.html"> 
+          <img src="Images/code1.jpg" hspace="100" width="70%" alt="Travelling Salesman Problem q1">
+        </a>
+
+        <br><br>
+        <pre style="font-family:Helvetica Neue ; font-size:16px;" >                                 (Python) The Travelling Salesman Modified 1 </pre>
+        
+      </div>
+
+      <div class="col-sm">
+        <a href ="tsmq2.html"> 
+          <img src="Images/code2.jpg" hspace="100" width="70%" alt="Travelling Salesman Problem q2">
+        </a>
+
+        <br><br>
+        <pre style="font-family:Helvetica Neue ; font-size:16px;" >                                   (Python) The Travelling Salesman Modified 2 </pre>
+        
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script>
+    includeHTML();
+</script>

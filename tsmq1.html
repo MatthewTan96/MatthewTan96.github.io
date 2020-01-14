@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <div w3-include-html="bootstrap.html"></div>
+  <script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+  </script>
+
+<head>
+    <div w3-include-html="navigationBar.html"></div>
+    <title>TSM Q1</title>
+</head>
+
+<body>
+    <!-- Title -->
+    <br>
+    <h1 style="text-align:center">Travelling Salesman Project Q1</h1>
+    <br>
+
+    <div class="list-group">
+        <a href="Downloadables/TSP Q1.pdf" class="list-group-item list-group-item-action active" download>
+          Project Question
+        </a>
+        <a href="Downloadables/TSP Q1 Source Code.zip" class="list-group-item list-group-item-action" download>
+            Source Code
+        </a>
+      </div>
+</body>
+
+<script>
+    includeHTML();
+</script>
